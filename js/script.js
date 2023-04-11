@@ -32,7 +32,7 @@ const isEmpty = (name, email, message) => {
     console.log(email);
     console.log(message);
     formMessage.reset();
-    alert.innerHTML = `<p class="notif notif-success" id="notif">Pesan terkirim, kami akan menanggapi lebih lanjut terkait pertanyaan anda</p>`;
+    alert.innerHTML = `<p class="notif notif-success" id="notif">Halo <b>${name}</b>, Pesanmu terkirim, kami akan menanggapi lebih lanjut terkait pertanyaan anda</p>`;
     setInterval(setNotifTimer, 6000);
   }
 };
