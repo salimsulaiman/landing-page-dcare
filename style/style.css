@@ -2,6 +2,8 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 body {
   font-family: "Poppins", sans-serif;
@@ -9,6 +11,9 @@ body {
   position: relative;
 }
 
+.flex-column {
+  flex-direction: column;
+}
 /* button */
 
 button {
@@ -88,6 +93,19 @@ button {
   width: 90%;
   margin: 0px auto;
   padding: 20px;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.form-group {
+  margin: 20px 0;
+}
+
+.form-group label {
+  font-weight: 500;
 }
 nav {
   display: flex;
@@ -182,7 +200,7 @@ nav ul li a:hover {
 }
 
 .about {
-  padding: 52px;
+  padding: 110px 59px;
 }
 
 .about h2 {
@@ -230,7 +248,7 @@ nav ul li a:hover {
 
 .feature {
   color: #475569;
-  padding: 59px;
+  padding: 110px 59px;
   background-color: #fff;
 }
 
@@ -258,12 +276,18 @@ nav ul li a:hover {
 }
 
 .articel {
-  padding: 52px;
+  padding: 110px 59px;
   color: #475569;
 }
 
 .articel h2 {
   color: #334155;
+}
+
+.contact {
+  padding: 110px 59px;
+  background-color: #fff;
+  color: #475569;
 }
 
 footer {
@@ -306,6 +330,36 @@ footer img {
   display: inline-block;
 }
 
+input {
+  border: 1px solid #1e293b;
+  font-size: 16px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+textarea {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+}
+
+.notif {
+  margin: 20px 120px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.notif-danger {
+  background-color: #d9534f;
+}
+
+.notif-success {
+  background-color: #5cb85c;
+}
 @media screen and (max-width: 1024px) {
   .hero-container {
     display: flex;

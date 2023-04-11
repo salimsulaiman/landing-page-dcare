@@ -12,3 +12,33 @@ const changeNav = () => {
 };
 
 window.addEventListener("scroll", changeNav, false);
+
+let formMessage = document.getElementById("formMessage");
+let name = document.getElementById("name");
+let email = document.getElementById("email");
+let message = document.getElementById("message");
+
+let alert = document.getElementById("alert");
+
+const setNotifTimer = () => {
+  alert.innerHTML = ``;
+};
+const isEmpty = (name, email, message) => {
+  if (name == "" || email == "" || message == "") {
+    alert.innerHTML = `<p class="notif notif-danger" id="notif">Harap isi semua field yang disediakan</p>`;
+    setInterval(setNotifTimer, 6000);
+  } else {
+    console.log(name);
+    console.log(email);
+    console.log(message);
+    formMessage.reset();
+    alert.innerHTML = `<p class="notif notif-success" id="notif">Pesan terkirim, kami akan menanggapi lebih lanjut terkait pertanyaan anda</p>`;
+    setInterval(setNotifTimer, 6000);
+  }
+};
+
+formMessage.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  isEmpty(name.value, email.value, message.value);
+});

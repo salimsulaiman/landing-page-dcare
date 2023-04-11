@@ -7,13 +7,14 @@
     <title>D'care</title>
     <link rel="stylesheet" href="style/style.css" />
   </head>
-  <body>
+  <body id="home">
     <nav>
       <span class="nav-brand">D'care</span>
       <ul>
-        <li><a href="">Beranda</a></li>
-        <li><a href="">Fitur</a></li>
-        <li><a href="">Tentang Kami</a></li>
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#feature">Fitur</a></li>
+        <li><a href="#about">Tentang Kami</a></li>
+        <li><a href="#contact">Hubungi Kami</a></li>
         <li>|</li>
         <li><a href="" class="btn btn-primary">Signup</a></li>
       </ul>
@@ -30,7 +31,7 @@
         <div class="hero-image"><img src="assets/img/hero-image.png" alt="" /></div>
       </div>
     </section>
-    <section class="about">
+    <section class="about" id="about">
       <h2 class="text-center">Apa itu D'care</h2>
       <div class="container">
         <p class="text-center px-12">
@@ -48,7 +49,7 @@
         <a href="" class="btn btn-purple">Detail</a>
       </div>
     </section>
-    <section class="feature">
+    <section class="feature" id="feature">
       <h2 class="text-center">Apa yang kamu butuhkan?</h2>
       <p class="text-center">
         Hitung berat ideal mu menggunakan kalkulator BMI (Body Mass Index) atau asupan kalori yang ideal menggunakan
@@ -95,6 +96,27 @@
         nobis. Ducimus voluptatem officia itaque at quidem minima, repudiandae ipsam dignissimos nam?
       </div>
     </section>
+    <div class="contact" id="contact">
+      <h2 class="text-center">Ingin konsultasi dengan kami?</h2>
+      <div class="container">
+        <form class="px-12" id="formMessage">
+          <div class="form-group">
+            <label for="name">Nama</label>
+            <input type="text" id="name" name="name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" />
+          </div>
+          <div class="form-group">
+            <label for="message">Pesan</label>
+            <textarea name="message" id="message" cols="100%" rows="10"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Kirim</button>
+        </form>
+        <div class="alert" id="alert"></div>
+      </div>
+    </div>
     <footer>
       <div class="container">
         <div class="d-flex justify-content-space-around">
