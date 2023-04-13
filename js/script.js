@@ -13,32 +13,59 @@ const changeNav = () => {
 
 window.addEventListener("scroll", changeNav, false);
 
-let formMessage = document.getElementById("formMessage");
-let name = document.getElementById("name");
-let email = document.getElementById("email");
-let message = document.getElementById("message");
+let alert = document.getElementById("warning");
 
-let alert = document.getElementById("alert");
+let formMessage = document.getElementById("formMesage");
+let submitForm = document.getElementById("submit-form");
 
-const setNotifTimer = () => {
-  alert.innerHTML = ``;
+// const setNotifTimer = () => {
+//   alert.innerHTML = ``;
+// };
+
+const handleGetFormData = () => {
+  var obj = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    city: document.getElementById("city").value,
+    zipCode: document.getElementById("zip-code").value,
+    message: document.getElementById("message").value,
+    status: document.getElementById("status").checked,
+  };
+  return obj;
 };
-const isEmpty = (name, email, message) => {
-  if (name == "" || email == "" || message == "") {
-    alert.innerHTML = `<p class="notif notif-danger" id="notif">Harap isi semua field yang disediakan</p>`;
-    setInterval(setNotifTimer, 6000);
+
+const isNumber = (string) => {
+  if (isNaN(string) == false) {
+    return true;
   } else {
-    console.log(name);
-    console.log(email);
-    console.log(message);
-    formMessage.reset();
-    alert.innerHTML = `<p class="notif notif-success" id="notif">Halo <b>${name}</b>, Pesanmu terkirim, kami akan menanggapi lebih lanjut terkait pertanyaan anda</p>`;
-    setInterval(setNotifTimer, 6000);
+    return false;
   }
 };
 
-formMessage.addEventListener("submit", (e) => {
-  e.preventDefault();
+const checkboxIsChecked = () => {
+  if (document.getElementById("status").checked == true) {
+    return true;
+  } else {
+    return false;
+  }
+};
 
-  isEmpty(name.value, email.value, message.value);
+const validateFormData = (obj) => {
+  if (obj != null && isNumber(obj.zipCode) && checkboxIsChecked()) {
+    return true;
+  } else return false;
+};
+
+const submit = () => {
+  if (validateFormData(handleGetFormData()) == false) {
+    return (warning.innerHTML = `<div class = "notif notif-danger text-center">Periksa form anda sekali lagi</div>`);
+  } else {
+    let { city, email, message, name, status, zipCode } = handleGetFormData();
+    return (warning.innerHTML = `<div class = "notif notif-success text-center">Terimakasih <b>${name}</b>, kami akan menghubungi anda lebih lanjut</div>`);
+  }
+};
+
+submitForm.addEventListener("click", (e) => {
+  e.preventDefault();
+  submit();
 });
