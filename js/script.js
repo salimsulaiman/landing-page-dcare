@@ -13,6 +13,8 @@ const changeNav = () => {
 
 window.addEventListener("scroll", changeNav, false);
 
+let BASE_URL = "https://6438a4841b9a7dd5c9554920.mockapi.io";
+
 let alert = document.getElementById("warning");
 
 let formMessage = document.getElementById("formMesage");
@@ -56,12 +58,37 @@ const validateFormData = (obj) => {
   } else return false;
 };
 
-const submit = () => {
+const submit = async () => {
   if (validateFormData(handleGetFormData()) == false) {
     return (warning.innerHTML = `<div class = "notif notif-danger text-center">Periksa form anda sekali lagi</div>`);
   } else {
     let { city, email, message, name, status, zipCode } = handleGetFormData();
-    return (warning.innerHTML = `<div class = "notif notif-success text-center">Terimakasih <b>${name}</b>, kami akan menghubungi anda lebih lanjut</div>`);
+    try {
+      let response = await fetch(`${BASE_URL}/message`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify({
+          name: name,
+          city: city,
+          email: email,
+          zipCode: zipCode,
+          message: message,
+        }),
+      });
+      let data = await response.json();
+      // console.log(data);
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("city").value = "";
+      document.getElementById("zip-code").value = "";
+      document.getElementById("message").value = "";
+      document.getElementById("status").checked = false;
+      warning.innerHTML = `<div class = "notif notif-success text-center">Terimakasih <b>${name}</b>, kami akan menghubungi anda lebih lanjut</div>`;
+    } catch (error) {
+      return error;
+    }
   }
 };
 
@@ -69,3 +96,19 @@ submitForm.addEventListener("click", (e) => {
   e.preventDefault();
   submit();
 });
+
+let data = [];
+let getMessage = async () => {
+  try {
+    let response = await fetch(`${BASE_URL}/message`);
+    data = await response.json();
+    // console.log(data);
+    data.map((element, index) => {
+      console.log(element.name);
+    });
+  } catch (error) {
+    return error;
+  }
+};
+
+// getMessage();
